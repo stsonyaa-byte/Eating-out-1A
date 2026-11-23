@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eating out – Homework 1A</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f7f3f6;--card:#fff;--ink:#251c24;--mut:#6a5c67;--acc:#9b2466;--line:#e4d8e0;--chip:#f5e1ed;--ok:#17703f;--okbg:#e4f4ea;--bad:#a8231b;--badbg:#fcebea;--hint:#6e5200;--hintbg:#fff4cf;--field:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1419;--card:#251d24;--ink:#f1e8ef;--mut:#b5a5b1;--acc:#ee8cc0;--line:#43353f;--chip:#3b2a36;--ok:#7fdca5;--okbg:#17301f;--bad:#ff9a92;--badbg:#3a1b19;--hint:#f2d57a;--hintbg:#33290e;--field:#1a1419}}
+:root[data-theme="dark"]{--bg:#1a1419;--card:#251d24;--ink:#f1e8ef;--mut:#b5a5b1;--acc:#ee8cc0;--line:#43353f;--chip:#3b2a36;--ok:#7fdca5;--okbg:#17301f;--bad:#ff9a92;--badbg:#3a1b19;--hint:#f2d57a;--hintbg:#33290e;--field:#1a1419}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Georgia,"Iowan Old Style",serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px}
+.hw{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+h1{font-size:1.15rem;margin:0;color:var(--acc);flex:1 1 200px}
+.bar{flex:1 1 160px;height:8px;border-radius:4px;background:var(--chip);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.tot{font:600 .9rem system-ui,sans-serif;color:var(--mut);white-space:nowrap}
+main{max-width:760px;margin:0 auto;padding:16px}
+.intro{color:var(--mut);font:.95rem system-ui,sans-serif;margin:4px 0 16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:20px}
+section h2{margin:0 0 4px;font-size:1.2rem;display:flex;gap:10px;align-items:baseline}
+.num{color:var(--acc);font-size:1.5rem}
+.sub{margin:0 0 12px;color:var(--mut);font:.9rem system-ui,sans-serif}
+.bank{background:var(--chip);border-radius:6px;padding:10px 12px;margin-bottom:12px;font:.95rem system-ui,sans-serif}
+.bank span{display:inline-block;margin:2px 10px 2px 0}
+ol{list-style:none;margin:0;padding:0}
+li.row{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+li.row:first-child{border-top:0}
+.n{flex:0 0 1.4rem;color:var(--mut);font:600 .9rem system-ui,sans-serif;padding-top:.15rem}
+.body{flex:1;min-width:0}
+.q{color:var(--mut)}
+.line{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+input,select{font:inherit;font-size:.95rem;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:6px;padding:4px 8px;max-width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.ok{border-color:var(--ok)!important;background:var(--okbg)!important}
+.no{border-color:var(--bad)!important;background:var(--badbg)!important}
+.eg{border-style:dashed;color:var(--mut)}
+.pl{color:var(--acc)}
+.tag{font:.75rem system-ui,sans-serif;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:0 7px}
+.hb{border:1px solid var(--line);background:transparent;color:var(--mut);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:.8rem;padding:0}
+.hb:hover{background:var(--hintbg)}
+.note{margin-top:5px;font:.9rem/1.4 system-ui,sans-serif}
+.note div{padding:5px 9px;border-radius:6px;margin-top:4px}
+.note div:empty,.note [hidden]{display:none}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.no{background:var(--badbg);color:var(--bad)}
+.hint{background:var(--hintbg);color:var(--hint)}
+.passage{line-height:2.2}
+.passage select{padding:2px 4px}
+.passage .hb{width:22px;height:22px;margin:0 3px;vertical-align:middle}
+.pn{display:block}
+.pn li{padding:2px 0}
+.letters{margin:0 0 12px;font:.95rem system-ui,sans-serif;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px 14px}
+.tools{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.btn{font:600 .9rem system-ui,sans-serif;border-radius:6px;padding:7px 14px;cursor:pointer;border:1.5px solid var(--acc);background:var(--acc);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--acc)}
+.sc{margin-left:auto;font:600 .9rem system-ui,sans-serif;color:var(--mut)}
+.done{color:var(--ok)}
+footer{text-align:center;color:var(--mut);font:.85rem system-ui,sans-serif;padding:8px 16px 28px}
+</style>
+</head>
+<body>
+<header><div class="hw"><h1>Eating out – Homework 1A</h1><div class="bar"><i id="bar"></i></div><div class="tot" id="tot">0 / 0</div></div></header>
+<main>
+<p class="intro">Answer each item. Choices are checked as soon as you pick them; typed answers are checked when you press Enter or leave the box. Tap 💡 for a hint.</p>
+<div id="app"></div>
+</main>
+<footer id="foot">Finish all six exercises to complete the homework.</footer>
+<script>
+const N=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9' ]/g," ").replace(/\s+/g," ").trim();
+const A=(q,ans,h,e,o)=>({q,ans,h,e,...o});
+const EX=[
+{t:"Vocabulary: match the words with definitions",s:"Use the words in the box.",kind:"text",bank:["allergic","delicious","packed","service","set menu","spicy","terrace","vegetarian"],items:[
+{q:"someone who never eats meat or fish",eg:"vegetarian"},
+{q:"when someone brings your food or drinks in a café or restaurant",ans:["service"],h:"Think about what a waiter does for you.",e:"Answer: service – the work staff do when they look after customers."},
+{q:"when something makes you ill if you eat it or touch it",ans:["allergic"],h:"An adjective: you can be ___ to nuts or cheese.",e:"Answer: allergic – if you are allergic to something, it makes you ill."},
+{q:"an area next to a building where people can sit outside to eat",ans:["terrace"],h:"It’s outdoors, next to the restaurant.",e:"Answer: terrace – an outdoor eating area beside a café or restaurant."},
+{q:"strongly flavoured with spices",ans:["spicy"],h:"Think of chilli.",e:"Answer: spicy – food with a lot of spices (hot, strong flavour)."},
+{q:"food that tastes very nice",ans:["delicious"],h:"It’s stronger than ‘good’ or ‘nice’.",e:"Answer: delicious – tastes very good."},
+{q:"extremely crowded",ans:["packed"],h:"A restaurant with no free tables is ___.",e:"Answer: packed – completely full of people."},
+{q:"a short list of meals in a restaurant or café at a fixed price",ans:["set menu"],h:"Two words. Think ‘fixed price’.",e:"Answer: set menu – a menu with a limited choice for one price."}]},
+{t:"Choose the correct alternatives",s:"Pick a word for each gap.",kind:"passage",items:[
+{o:["packed","delicious"],eg:"packed"},
+{o:["service","set menu"],ans:"set menu",h:"‘Every main course’ – what has courses and a fixed price?",e:"Answer: set menu. A set menu has courses; ‘service’ does not."},
+{o:["vegetarian","decent"],ans:"vegetarian",h:"Why was meat or fish ‘no good’ for him or her?",e:"Answer: vegetarian. It explains why a meat or fish menu was no good."},
+{o:["delicious","quality"],ans:"delicious",h:"The gap describes how the baked cheese tasted.",e:"Answer: delicious. ‘Quality’ is a noun and doesn’t fit after ‘was’ here."},
+{o:["spicy","allergic"],ans:"spicy",h:"The dish had lots of spices.",e:"Answer: spicy. ‘Allergic’ means it makes you ill – but he enjoyed it."},
+{o:["service","terrace"],ans:"terrace",h:"It’s outside – ‘the outdoor heaters’ follows.",e:"Answer: terrace. You have coffee ON the terrace, an outdoor area."},
+{o:["heaters","menu"],ans:"heaters",h:"What keeps you warm outside?",e:"Answer: heaters. They kept people ‘lovely and warm’ outside."},
+{o:["order","value"],ans:"value",h:"A fixed collocation with ‘good’.",e:"Answer: value. ‘Good value’ means worth the money."}]},
+{t:"Rewrite the sentences",s:"Use the words in brackets so the sentence means the same.",kind:"text",items:[
+{q:"I can’t eat cheese because it makes me ill.",pre:"I’m",post:". (allergic)",eg:"allergic to cheese"},
+{q:"My sister doesn’t eat meat.",pre:"My sister",post:". (vegetarian)",ans:["is a vegetarian","is vegetarian"],h:"Use the verb be.",e:"Answer: is a vegetarian (is vegetarian also works) – be + vegetarian."},
+{q:"Shall I make a reservation for dinner on Saturday night?",pre:"Shall I",post:"? (book in advance)",ans:["book in advance for dinner on Saturday night","book in advance for dinner on Saturday"],h:"Replace ‘make a reservation’ and keep the rest.",e:"Answer: book in advance for dinner on Saturday night."},
+{q:"The waiter yesterday evening was fantastic.",pre:"We",post:". (service)",ans:["had fantastic service last night","had fantastic service yesterday evening"],h:"Make ‘we’ the subject: we had … service. Keep the time.",e:"Answer: had fantastic service last night. Service is uncountable, so no ‘a’."},
+{q:"We were there for an hour before we got a table.",pre:"We waited",post:". (ages)",ans:["ages for a table"],h:"‘Ages’ means a very long time. Wait + for + what?",e:"Answer: ages for a table – wait + for + noun."},
+{q:"Three courses with a drink costs £15.",pre:"The",post:". (set menu)",ans:["set menu costs 15","set menu is 15"],h:"Start with ‘set menu’, then costs or is.",e:"Answer: set menu costs/is £15."},
+{q:"It cost a lot more than the previous time we were there.",pre:"They have definitely",post:". (prices)",ans:["put up the prices","put up their prices","put the prices up","raised the prices","raised their prices","increased the prices","increased their prices"],h:"A phrasal verb meaning ‘increase’: put ___ the prices.",e:"Answer: put up the prices – ‘put up’ means increase."},
+{q:"The menu is excellent. I think you could take anyone there.",pre:"I think the place",post:". (suit)",ans:["would suit everyone","will suit everyone","would suit anyone","will suit anyone"],h:"Use would + suit; ‘everyone’ replaces ‘anyone’.",e:"Answer: would suit everyone – if a place suits you, it’s right for you."}]},
+{t:"Complete the sentences with the missing words",s:"The first letter is given. Type the whole word.",kind:"text",items:[
+{pre:"I was annoyed when the waiter got our",post:"wrong and brought me fish instead of steak.",L:"o",eg:"order"},
+{pre:"If you like spicy food, try the new Indian",post:"on the high street.",L:"p",ans:["place"],h:"An informal word for a restaurant.",e:"Answer: place – ‘an Indian place’ is an informal way to say a restaurant."},
+{pre:"I don’t suppose you",post:"pizza tonight, do you?",L:"f",ans:["fancy"],h:"An informal verb meaning ‘want’ or ‘feel like’.",e:"Answer: fancy – ‘fancy + noun’ means feel like having it."},
+{pre:"We had great service and",post:"quality food!",L:"t",ans:["top"],h:"The opposite of ‘bottom’.",e:"Answer: top – ‘top quality’ means the best quality."},
+{pre:"The plates were huge. It was very good",post:".",L:"v",ans:["value"],h:"You get a lot for your money.",e:"Answer: value – ‘good value’ means worth the price."},
+{pre:"I really appreciate it when restaurants offer",post:"of choice for vegetarians.",L:"p",ans:["plenty"],h:"It means ‘a lot’, followed by ‘of’.",e:"Answer: plenty – ‘plenty of’ means a lot of."}]},
+{t:"Grammar – noun phrases: match the sentence halves",s:"Choose a letter a–f for each beginning.",kind:"select",letters:["a was too spicy.","b by the window?","c who served us spoke very good English.","d to take away.","e sells amazing cakes.","f where I first met my boyfriend."],items:[
+{pre:"I’m going to get a coffee",eg:"d"},
+{pre:"The pasta that my friend ordered",ans:"a",h:"Look for a verb that goes with ‘pasta’.",e:"Answer: a – the pasta (that my friend ordered) was too spicy."},
+{pre:"The café across the road",ans:"e",h:"‘Across the road’ only adds detail. The café still needs a verb.",e:"Answer: e – the café … sells amazing cakes."},
+{pre:"Can I book a table",ans:"b",h:"A polite question about where to sit.",e:"Answer: b – book a table by the window."},
+{pre:"That’s the café",ans:"f",h:"Which ending starts with a word for a place?",e:"Answer: f – ‘where’ refers to a place."},
+{pre:"The Italian waiter",ans:"c",h:"Which ending starts with a word for a person?",e:"Answer: c – ‘who’ refers to a person."}]},
+{t:"Grammar – complete the sentences with one word",s:"One word only, unless the answer shows two choices.",kind:"text",items:[
+{pre:"This is the first dish",post:"my mother taught me how to cook.",ans:["that","which"],h:"A relative pronoun for things.",e:"Answer: that/which – refers to a thing (the dish)."},
+{pre:"This is my Grandma,",post:"is allergic to spicy food.",ans:["who"],h:"Relative pronoun for people; after a comma ‘that’ is not allowed.",e:"Answer: who – refers to a person after a comma."},
+{pre:"Let’s try that new restaurant",post:"the old town.",ans:["in"],h:"Which preposition shows a place inside a town area?",e:"Answer: in – the restaurant in the old town."},
+{pre:"I’m looking for a nice vegetarian restaurant",post:"take my sister to for dinner.",ans:["to"],h:"A small word that makes ‘take’ an infinitive.",e:"Answer: to – infinitive of purpose after a noun."},
+{pre:"Cheneys is the best place",post:"have breakfast.",ans:["to"],h:"What comes before ‘have’ to say what the place is for?",e:"Answer: to – ‘the best place to have breakfast’."},
+{pre:"Shall we meet at the café",post:"to the cathedral?",ans:["next"],h:"It means ‘beside’: ___ to.",e:"Answer: next – ‘next to’ means beside."},
+{pre:"That’s the restaurant",post:"Jon used to work.",ans:["where"],h:"A relative word for places.",e:"Answer: where – refers to a place (the restaurant)."},
+{pre:"Espresso is the best kind of coffee",post:"have after lunch.",ans:["to"],h:"Same pattern as ‘the best place to…’.",e:"Answer: to – infinitive after a superlative (best)."}]}
+];
+const P=["I went to the new Spanish place with my friend last night. It was so ",1," that we had to share a table with some other people. The ",2," was good value, but every main course included meat or fish. I’m ",3,", so that was no good for me. Instead, I chose baked cheese with honey, which was ",4,". My friend had a meat dish, which had lots of spices in it. I thought it was too ",5,", but he enjoyed it. After our meal, we had coffee on the ",6,", which was very nice. The outdoor ",7," were on, so we were lovely and warm. The meal came to just under 25 euros for each of us, which we both thought was good ",8,"."];
+const $=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const app=document.getElementById("app");
+const secs=[];
+function box(it){const b=$("div","note");it.hint=$("div","hint","");it.hint.hidden=true;it.fb=$("div","fb","");b.append(it.hint,it.fb);it.box=b;return b}
+function hbtn(it){const b=$("button","hb","💡");b.type="button";b.title="Hint";b.setAttribute("aria-label","Show hint");b.onclick=()=>{it.hint.hidden=!it.hint.hidden;it.hint.textContent="💡 "+it.h;sync(it)};return b}
+function sync(it){if(it.pass)it.box.hidden=!(it.fb.textContent||!it.hint.hidden)}
+function ctl(it,x){
+ let c;
+ if(x.kind==="passage"||x.kind==="select"){
+  c=$("select");c.innerHTML='<option value="">–</option>'+(it.o||"abcdef".split("")).map(o=>`<option>${o}</option>`).join("");
+  c.onchange=()=>check(it);
+ }else{
+  c=$("input");c.type="text";c.autocomplete="off";c.autocapitalize="none";c.spellcheck=false;
+  const w=it.ans?Math.max(...it.ans.map(a=>a.length)):it.eg.length;c.style.width=Math.max(8,w+4)+"ch";
+  c.onblur=()=>{if(c.value.trim())check(it)};c.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();check(it)}};
+ }
+ if(it.eg){c.value=it.eg;c.disabled=true;c.classList.add("eg")}
+ it.ctrl=c;return c;
+}
+function check(it){
+ const v=it.ctrl.value.trim();
+ if(!v){it.ok=null;it.ctrl.classList.remove("ok","no");setFb(it,"","");upd();return}
+ let g;
+ if(it.o||it.kind==="select")g=v===it.ans;else{let t=N(v);if(it.L&&!t.startsWith(it.L))t=it.L+t;g=it.ans.some(a=>N(a)===t)}
+ it.ok=g;it.ctrl.classList.toggle("ok",g);it.ctrl.classList.toggle("no",!g);
+ setFb(it,g?"ok":"no",(g?"✓ Correct. ":"✗ Not quite. ")+it.e);upd();
+}
+function setFb(it,c,m){it.fb.className="fb "+c;it.fb.textContent=(it.pass&&m?it.n+". ":"")+m;sync(it)}
+EX.forEach((x,xi)=>{
+ const s=$("section","",`<h2><span class="num">${xi+1}</span>${x.t}</h2><p class="sub">${x.s}</p>`);
+ const its=x.items.map((it,i)=>({...it,n:i+1,pass:x.kind==="passage",o:it.o,kind:x.kind}));
+ if(x.bank)s.append($("div","bank",x.bank.map(b=>`<span>${b}</span>`).join("")));
+ if(x.letters)s.append($("div","letters",x.letters.map(l=>`<span><b>${l[0]}</b> ${l.slice(2)}</span>`).join("")));
+ if(x.kind==="passage"){
+  const p=$("p","passage");
+  P.forEach(seg=>{if(typeof seg==="string")p.append(seg);else{const it=its[seg-1];p.append(ctl(it,x));box(it);if(it.h)p.append(hbtn(it));}});
+  s.append(p);const l=$("ol","pn");its.forEach(it=>{const li=$("li");box(it);li.append(it.box);it.box.hidden=true;l.append(li)});s.append(l);
+ }else{
+  const ol=$("ol");
+  its.forEach(it=>{
+   const li=$("li","row");li.append($("span","n",it.n));const b=$("div","body");
+   if(it.q)b.append($("div","q",it.q));
+   const ln=$("div","line");
+   if(it.pre)ln.append(it.pre);
+   if(it.L)ln.append($("b","pl",it.L));
+   ln.append(ctl(it,x));
+   if(it.post)ln.append(it.post);
+   if(it.eg)ln.append($("span","tag","example"));
+   else ln.append(hbtn(it));
+   b.append(ln,box(it));li.append(b);ol.append(li);
+  });
+  s.append(ol);
+ }
+ const t=$("div","tools");
+ const ck=$("button","btn","Check all");ck.type="button";
+ const rs=$("button","btn ghost","Reset");rs.type="button";
+ const sc=$("span","sc","");
+ t.append(ck,rs,sc);s.append(t);app.append(s);
+ ck.onclick=()=>its.forEach(it=>{if(it.eg)return;if(!it.ctrl.value.trim()){it.ctrl.classList.add("no");setFb(it,"no","Not answered yet.")}else check(it)});
+ rs.onclick=()=>{its.forEach(it=>{if(it.eg)return;it.ctrl.value="";it.ok=null;it.ctrl.classList.remove("ok","no");it.hint.hidden=true;setFb(it,"","")});upd()};
+ secs.push({its,sc});
+});
+function upd(){
+ let d=0,t=0,full=0;
+ secs.forEach(s=>{const q=s.its.filter(i=>!i.eg),c=q.filter(i=>i.ok).length;d+=c;t+=q.length;
+  s.sc.textContent=c+" / "+q.length+" correct";s.sc.classList.toggle("done",c===q.length);if(c===q.length)full++});
+ document.getElementById("bar").style.width=(t?d/t*100:0)+"%";
+ document.getElementById("tot").textContent=d+" / "+t;
+ document.getElementById("foot").textContent=full===secs.length?"🎉 All six exercises complete. Great work!":"Finish all six exercises to complete the homework.";
+}
+upd();
+</script>
+</body>
+</html>
